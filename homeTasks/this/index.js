@@ -1,10 +1,8 @@
-/*
-Дан массив объектов:
+/*Дан массив объектов:
 Каждому объекту из этого массива необходимо добавить метод .sayHello()
-который выводит сообщение вида "Hello! My name is {NAME}", где NAME - это поле name каждго объекта
-*/
-/*function sayHello() {
-  console.log(`Hello! My name is ${this.name}`)
+который выводит сообщение вида "Hello! My name is {NAME}", где NAME - это поле name каждго объекта*/
+function sayHello() {
+  console.log(`Hello! My name is ${this.name}`);
 }
 
 const persons = [
@@ -31,23 +29,20 @@ for (let i =0; i < persons.length; i++){
 }
 
 
-/!*2. используя setTimeout и цикл, вызовите метод .sayHello() у каждого объекта с задержкой в 1 секунду*!/
+/*2. используя setTimeout и цикл, вызовите метод .sayHello() у каждого объекта с задержкой в 1 секунду*/
 
-setTimeout(()=>{
-    for (let i =0; i < persons.length; i++){
-        persons[i].func();
-    }
-},1000)*/
+for (let i = 0; i<persons.length; i++){
+    setTimeout(()=>{
+       persons[i].func();
+    }, i*1000)
+}
+
 
 /*3. используя объект const creature = { name: 'Ctulhu', eyes: 8 }, заставьте creature воспользоваться
 методом .sayHello() любого объекта из массива, при этом не добавляя этот метод в creature*/
 
-/*const creature = { name: 'Ctulhu', eyes: 8 }
-
+/*const creature = { name: 'Ctulhu', eyes: 8 };
 persons[0].func.call(creature)*/
-
-
-
 
 /*
 4. напишите функцию которая принимает коллбэк (метод .sayHello() любого объекта из массива)
@@ -66,12 +61,13 @@ presentation(persons[1].sayHello)
 "Hello! My name is Two"
 */
 
-/*function presentation (func){
-    console.log(`Ladies and Gentlemen, here is our person: ${func()}`)
+function presentation (func){
+    console.log('Ladies and Gentlemen, here is our person:');
+    func();
 }
 
-function callBack(n) {
-        return persons[n].func;
+for (let i =0; i < persons.length; i++){
+    presentation(persons[i].func.bind(persons[i]))
 }
 
-presentation(callBack(0))*/
+
