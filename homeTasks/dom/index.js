@@ -22,8 +22,8 @@ function ternOffAllClicks() {
 }
 
 //-----------------вариант с одной бомбой----------------------------------
-/*function changesImgOnClickMaker () {
-    let counter = 0;
+function changesImgOnClickMaker () {
+    let youGuessedItOnce = false;
     return function () {
         let randomNumb = Math.floor(Math.random() * 3 + 1);
         if (randomNumb % 2 === 0) {
@@ -32,19 +32,18 @@ function ternOffAllClicks() {
             console.log("YOU LOSE")
         } else if (randomNumb % 2 !== 0) {
             this.src = okImage
-            counter++;
-        } else if (randomNumb % 2 !== 0 && counter === 2) {
+            youGuessedItOnce = true
+        } else if (randomNumb % 2 !== 0 && youGuessedItOnce) {
             console.log("YOU WIN")
             ternOffAllClicks()
         }
     }
 }
 
-const changesImgOnClick = changesImgOnClickMaker();*/
+const changesImgOnClick = changesImgOnClickMaker();
 
 //-------------------вариант с двумя бомбами--------------------------------
-
-function changesImgOnClick() {
+/*function changesImgOnClick() {
     let randomNumb = Math.floor(Math.random() * 4 + 1);
     if (+(this.alt) !== randomNumb) {
         this.src = boomImage;
@@ -55,8 +54,7 @@ function changesImgOnClick() {
         console.log("YOU WIN")
         ternOffAllClicks()
     }
-}
-
+}*/
 
 oneButton.addEventListener('click', changesImgOnClick)
 secondButton.addEventListener('click', changesImgOnClick)
