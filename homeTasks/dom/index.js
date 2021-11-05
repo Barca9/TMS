@@ -20,6 +20,7 @@ function ternOffAllClicks() {
     secondButton.removeEventListener('click', changesImgOnClick)
     threeButton.removeEventListener('click', changesImgOnClick)
 }
+
 //-----------------вариант с одной бомбой----------------------------------
 /*function changesImgOnClickMaker () {
     let counter = 0;
@@ -42,21 +43,20 @@ function ternOffAllClicks() {
 const changesImgOnClick = changesImgOnClickMaker();*/
 
 //-------------------вариант с двумя бомбами--------------------------------
-function changesImgOnClickMaker() {
+
+function changesImgOnClick() {
     let randomNumb = Math.floor(Math.random() * 4 + 1);
-    return function () {
-        if (+(this.alt) !== randomNumb) {
-            this.src = boomImage;
-            console.log("YOU LOSE")
-            ternOffAllClicks()
-        } else {
-            this.src = okImage;
-            console.log("YOU WIN")
-            ternOffAllClicks()
-        }
+    if (+(this.alt) !== randomNumb) {
+        this.src = boomImage;
+        console.log("YOU LOSE")
+        ternOffAllClicks()
+    } else {
+        this.src = okImage;
+        console.log("YOU WIN")
+        ternOffAllClicks()
     }
 }
-const changesImgOnClick = changesImgOnClickMaker();
+
 
 oneButton.addEventListener('click', changesImgOnClick)
 secondButton.addEventListener('click', changesImgOnClick)
