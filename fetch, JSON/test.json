@@ -1,0 +1,8 @@
+{
+  "name" : "John",
+  "age" : 23,
+  "size": {
+    "width" :  200
+  },
+  "stack" : ["Js", "HTML"]
+}
